@@ -1,11 +1,15 @@
 <!doctype html>
 <html>
 <head>
-  <title>Timer</title>
+  <meta charset="UTF-8">
+  <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 
 <body>
   <h1>hello!</h1>
-  <script src="bundle.js"></script>
+  <audio
+    src="<%= require('./assets/sounds/03.flac')%>"
+    controls
+    ></audio>
 </body>
 </html>
