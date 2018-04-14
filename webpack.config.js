@@ -17,6 +17,10 @@ module.exports = {
         test: /sounds\/.*\.flac$/,
         use: [ 'file-loader' ]
       },
+      {
+        test: /\.css$/,
+        use: [ 'css-loader' ]
+      },
     ]
   },
   plugins: [

@@ -3,13 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <style> <%= require('normalize.css')%> </style>
+  <style> <%= require('./main.css')%> </style>
 </head>
 
 <body>
-  <h1>hello!</h1>
+  <div class="container">
+    <div class="clock center-block hilight">
+      <span class="centered hilight">00:00:00</span>
+    </div>
+  </div>
+
+  <button id="btn-start">Start!</button>
+
   <audio
+    id="tick"
     src="<%= require('./assets/sounds/03.flac')%>"
-    controls
+    preload="auto"
+    ></audio>
+  <audio
+    id="gong"
+    src="<%= require('./assets/sounds/01.flac')%>"
+    preload="auto"
     ></audio>
 </body>
 </html>
