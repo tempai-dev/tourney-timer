@@ -27,3 +27,14 @@ body .container {
   display: inline-block;
   vertical-align: middle;
 }
+
+#btn-start {
+  float: right;
+}
+
+@keyframes flash {
+  0%, 100% { background-color: white; }
+  10%      { background-color: yellowgreen; }
+}
+
+.flashing { animation: flash 350ms ease; }

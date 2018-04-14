@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title><%= htmlWebpackPlugin.options.title %></title>
-  <style> <%= require('normalize.css')%> </style>
-  <style> <%= require('./main.css')%> </style>
+  <style>
+    <%= require('normalize.css')%>
+  </style>
+  <style>
+    <%= require('materialize-css/dist/css/materialize.css')%>
+  </style>
+  <style>
+    <%= require('./main.css')%>
+  </style>
 </head>
 
 <body>
@@ -14,7 +21,7 @@
     </div>
   </div>
 
-  <button id="btn-start">Start!</button>
+  <button id="btn-start" class="btn">Start!</button>
 
   <audio
     id="tick"
