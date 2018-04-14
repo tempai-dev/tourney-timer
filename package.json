@@ -1,0 +1,13 @@
+{
+  "name": "tourney-timer",
+  "version": "1.0.0",
+  "description": "A little timer app",
+  "main": "index.js",
+  "author": "Max <ulidtko@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.22.0",
+    "normalize.css": "^8.0.0",
+    "vue": "^2.5.16"
+  }
+}
