@@ -1,14 +1,11 @@
-
 .hilight {
   border: thin red dashed;
 }
 
+html, body { height: 100%; }
+
 body .container {
   width: 100%;
-  height: 20em;
-}
-
-.clock {
   height: 100%;
 }
 
@@ -22,14 +19,17 @@ body .container {
   vertical-align: middle;
   margin-right: -0.25em;
 }
-
 .centered {
   display: inline-block;
   vertical-align: middle;
 }
 
-#btn-start {
-  float: right;
+.clock {
+  height: 100%;
+}
+
+.clock span {
+  font-size: 48pt;
 }
 
 @keyframes flash {

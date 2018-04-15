@@ -8,12 +8,27 @@ var gHanchanEnd = localStorage.getItem('hanchan_end');
 setInterval(RefreshClock, 1000)
 setInterval(CheckTimeouts, 1000)
 
+document.getElementById('btn-start')
+  .addEventListener('click', StartHanchanCountdown)
+
+RefreshClock()
+
+function hide(el) { el.classList.add('hide') }
+function unhide(el) { el.classList.remove('hide') }
+
 function RefreshClock() {
   let clock = document.querySelector('.clock')
-  let text = (!! gHanchanEnd)
-        ? moment.duration(moment(gHanchanEnd).diff(moment())).format('hh:mm:ss')
-        : HANCHAN_DURATION.format('hh:mm:ss')
-  clock.innerText = text
+  let digits = document.querySelector('.clock span')
+  let button = document.getElementById('btn-start')
+  if (!! gHanchanEnd) {
+    hide(button)
+    unhide(digits)
+    digits.innerText = moment.duration(moment(gHanchanEnd).diff(moment()))
+                        .format('hh:mm:ss')
+  } else {
+    unhide(button)
+    hide(digits)
+  }
 }
 
 function CheckTimeouts() {
@@ -54,9 +69,7 @@ function StartHanchanCountdown() {
   setTimeout(() => playOnce(tick), 1000)
   setTimeout(() => playOnce(tick), 2000)
   setTimeout(() => playOnce(tick), 3000)
-  setTimeout(() => { playOnce(gong); startTimer(); }, 4000)
+  setTimeout(() => playOnce(tick), 4000)
+  setTimeout(() => { playOnce(gong); startTimer(); }, 5000)
   /* Yoroshiku Onegaishimasu! */
 }
-
-document.getElementById('btn-start')
-  .addEventListener('click', StartHanchanCountdown)
