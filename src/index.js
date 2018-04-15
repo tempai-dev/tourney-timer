@@ -3,14 +3,31 @@ require('moment-duration-format')(moment);
 
 const HANCHAN_DURATION = moment.duration(90, 'minutes')
 
-var gHanchanEnd = null; // TODO persist this
+var gHanchanEnd = localStorage.getItem('hanchan_end');
+
+setInterval(RefreshClock, 1000)
+setInterval(CheckTimeouts, 1000)
 
 function RefreshClock() {
   let clock = document.querySelector('.clock')
   let text = (!! gHanchanEnd)
-                ? moment.duration(gHanchanEnd.diff(moment())).format('hh:mm:ss')
-                : HANCHAN_DURATION.format('hh:mm:ss')
+        ? moment.duration(moment(gHanchanEnd).diff(moment())).format('hh:mm:ss')
+        : HANCHAN_DURATION.format('hh:mm:ss')
   clock.innerText = text
+}
+
+function CheckTimeouts() {
+  if (!gHanchanEnd) return;
+  let remaining = moment(gHanchanEnd).diff(moment(), 'seconds')
+  console.log(remaining + " seconds remaining")
+  if (remaining == 0) {
+    // stop the clock
+    gHanchanEnd = null
+    localStorage.setItem('hanchan_end', gHanchanEnd)
+  }
+  if (remaining == 1*60) {
+    console.log('last minute warning!')
+  }
 }
 
 function StartHanchanCountdown() {
@@ -32,7 +49,7 @@ function StartHanchanCountdown() {
   RefreshClock()
   let startTimer = function() {
     gHanchanEnd = moment().add(HANCHAN_DURATION)
-    setInterval(RefreshClock, 1000)
+    localStorage.setItem('hanchan_end', gHanchanEnd)
   }
   setTimeout(() => playOnce(tick), 1000)
   setTimeout(() => playOnce(tick), 2000)
