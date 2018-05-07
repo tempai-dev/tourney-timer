@@ -36,5 +36,10 @@ body .container {
   0%, 100% { background-color: white; }
   10%      { background-color: yellowgreen; }
 }
+@keyframes floop {
+  0%   { background-color: gray; }
+  100% { background-color: white; }
+}
 
-.flashing { animation: flash 350ms ease; }
+.blip { animation: flash 350ms ease; }
+.floop { animation: floop 2900ms ease; }
