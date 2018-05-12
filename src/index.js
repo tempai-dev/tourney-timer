@@ -47,6 +47,14 @@ function CheckTimeouts() {
   if (remaining == 1*60) {
     console.log('last minute warning!')
   }
+  if (remaining == 5*60) {
+    PlaySound('5min.warn')
+    flashClock('floop', 2900)
+  }
+  if (remaining == 15*60) {
+    PlaySound('15min.warn')
+    flashClock('floop', 2900)
+  }
 }
 
 function PlaySound(audioid) {
